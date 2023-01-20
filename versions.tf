@@ -1,13 +1,5 @@
 terraform {
   required_version = ">= 1.3.0"
-  cloud {
-    organization = "cklewar"
-    hostname     = "app.terraform.io"
-
-    workspaces {
-      name = "f5-xc-aws-vpc-module"
-    }
-  }
 
   required_providers {
     volterra = {
@@ -23,4 +15,16 @@ terraform {
     local = ">= 2.2.3"
     null  = ">= 3.1.1"
   }
+}
+
+provider "aws" {
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_key
+  region     = var.aws_region
+}
+provider "volterra" {
+  api_p12_file = var.api_p12_file
+  api_cert     = var.api_p12_file != "" ? "" : var.api_cert
+  api_key      = var.api_p12_file != "" ? "" : var.api_key
+  url          = var.api_url
 }

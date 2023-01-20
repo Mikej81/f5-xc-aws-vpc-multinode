@@ -431,3 +431,7 @@ ck.tfvars.json
 ck_gcp_creds.json
 ck.*
 *.p12
+
+.terraform.lock.hcl
+.github/
+.terraform/
